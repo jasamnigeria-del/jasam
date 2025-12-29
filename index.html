@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jasam Nigeria</title>
+    <style>
+        /* --- RESET & BASIC STYLES --- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            line-height: 1.6;
+            color: #333;
+            background-color: #f9f9f9;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: 0.3s;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* --- VARIABLES --- */
+        :root {
+            --primary-color: #2e7d32; /* Earthy Green */
+            --secondary-color: #e8f5e9; /* Light Green */
+            --accent-color: #f9a825; /* Harvest Yellow/Orange */
+            --text-dark: #1a1a1a;
+            --text-light: #fff;
+        }
+
+        /* --- HEADER --- */
+        header {
+            background-color: #fff;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .top-bar {
+            background-color: var(--primary-color);
+            color: var(--text-light);
+            padding: 10px 5%;
+            font-size: 0.9rem;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 5%;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--primary-color);
+            text-transform: uppercase;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 20px;
+        }
+
+        .nav-links a {
+            color: var(--text-dark);
+            font-weight: 500;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-color);
+        }
+
+        .btn-quote {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-weight: bold;
+        }
+
+        /* --- HERO SECTION --- */
+        .hero {
+            background-image:url(img_jasam/jasam\ logo\ 2.png) ;
+            background-position: center;
+            height: 80vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: black;
+            padding: 0 20px;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 30px;
+        }
+
+        .hero-btn {
+            background-color: var(--accent-color);
+            color: var(--text-dark);
+            padding: 15px 30px;
+            font-size: 1.1rem;
+            border-radius: 5px;
+            font-weight: bold;
+        }
+
+        /* --- SECTIONS COMMON --- */
+        .section {
+            padding: 60px 5%;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .section-title h2 {
+            color: var(--primary-color);
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+
+        .section-title p {
+            color: #666;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* --- ABOUT --- */
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: center;
+        }
+
+        .about-text h3 {
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+        }
+
+        /* --- PRODUCTS --- */
+        .products-bg {
+            background-color: var(--secondary-color);
+        }
+
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .product-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .product-img {
+            height: 300px;
+            background-color: #ddd;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .product-content {
+            padding: 20px;
+        }
+
+        .product-content h3 {
+            color: var(--primary-color);
+            margin-bottom: 10px;
+        }
+
+        /* --- SERVICES / HOW WE WORK --- */
+        .process-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            text-align: center;
+        }
+
+        .process-card {
+            padding: 30px;
+            border: 1px solid #eee;
+            border-radius: 10px;
+        }
+
+        .process-icon {
+            font-size: 2rem;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+        }
+
+        /* --- STATS --- */
+        .stats {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 60px 5%;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            text-align: center;
+        }
+
+        .stat-item h2 {
+            font-size: 3rem;
+            margin-bottom: 10px;
+        }
+
+        /* --- CONTACT --- */
+        .contact-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+        }
+
+        .contact-info h3 {
+            margin-bottom: 20px;
+        }
+
+        .info-item {
+            margin-bottom: 20px;
+            display: grid;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .contact-form input, .contact-form textarea {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .submit-btn {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 12px 25px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+
+        /* --- FOOTER --- */
+        footer {
+            background-color: #222;
+            color: #ddd;
+            padding: 50px 5% 20px;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-col h4 {
+            color: white;
+            margin-bottom: 20px;
+            font-size: 1.2rem;
+        }
+
+        .footer-col ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid #444;
+            padding-top: 20px;
+            text-align: center;
+            font-size: 0.9rem;
+        }
+
+        /* --- RESPONSIVE --- */
+        @media (max-width: 768px) {
+            .about-grid, .contact-container {
+                grid-template-columns: 1fr;
+            }
+            .nav-links {
+                display: none; /* Simple mobile hide for demo */
+            }
+            .hero h1 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="top-bar">
+        <span><i class="fas fa-phone"></i> +234 8033122567</span>
+        <span>Certified by NAQS & NAFDAC</span>
+    </div>
+
+    <header>
+        <div class="nav-container">
+            <div class="logo">JASAM NIGERIA</div>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">About Us</a></li>
+                    <li><a href="#products">Products</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+            <a href="#contact" class="btn-quote">Get a Quote</a>
+        </div>
+    </header>
+
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h1>Premium Exporter of Organic Agricultural Products</h1>
+            <p>We manufacture and export high-quality Dried Hibiscus Flowers, 
+                Tigernuts,Ginger Flakes, Turmeric Powder and Dried Pepper. 
+                Certified by NAQS & NAFDAC and trusted globally.</p>
+            <a href="#products" class="hero-btn">Explore Products</a>
+        </div>
+    </section>
+
+    <section class="section" id="about">
+        <div class="about-grid">
+            <div class="about-image">
+                <img src="img_jasam/dried tiger nuts.jpeg" alt="About Jasam Nigeria">
+            </div>
+            <div class="about-text">
+                <h3>15+ Years of Experience</h3>
+                <p><strong>JASAM NIGERIA LIMITED</strong> is a privately owned agricultural company established in 1987. We specialize in the production and export of organic agricultural products to global markets including the USA, Europe, Asia, and the Middle East.</p>
+                <br>
+                <ul style="list-style: disc; margin-left: 20px;">
+                    <li>Certified by NAQS & NAFDAC</li>
+                    <li>Customized Packaging Facility</li>
+                    <li>5000 kilograms Weekly Production Capacity</li>
+                    <li>We produce natural healthy products, and prices are very negotiable</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section class="section" id="services" style="background-color: #f4f4f4;">
+        <div class="section-title">
+            <h2>Our Services</h2>
+            <p>Streamlined processes for trusted agricultural export.</p>
+        </div>
+        <div class="process-grid">
+            <div class="process-card">
+                <div class="process-icon">🌱</div>
+                <h3>Sourcing</h3>
+                <p>We produce and source organically grown products directly from local farmers, ensuring healthy and high quality.</p>
+            </div>
+            <div class="process-card">
+                <div class="process-icon">⚙️</div>
+                <h3>Processing</h3>
+                <p>Cleaning, drying, and processing are done under hygienic conditions to preserve natural color and flavor.</p>
+            </div>
+            <div class="process-card">
+                <div class="process-icon">📦</div>
+                <h3>Packaging</h3>
+                <p>We offer PP bags, and also customized packaging on demand by clients.</p>
+            </div>
+            <div class="process-card">
+                <div class="process-icon">🚢</div>
+                <h3>Logistics</h3>
+                <p>We handle all export documentation and export logistics for timely delivery to our clients at required destination.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="section products-bg" id="products">
+        <div class="section-title">
+            <h2>Our Products</h2>
+            <p>Nurturing Nature – Premium Agricultural Products from Sunny Fields.</p>
+        </div>
+        <div class="product-grid">
+            <div class="product-card">
+                <div class="product-img" style="background-image: url('img_jasam/ground\ pepper.jpeg');"></div>
+                <div class="product-content">
+                    <h3>Ground Pepper Powder</h3>
+                    <p>Sun-dried and ground pepper processed under hygienic conditions. Delivers strong aroma 
+                        and long shelf life. Available in 1kg packs and 25kg bags.</p>
+                </div>
+            </div>
+            <div class="product-card">
+                <div class="product-img" style="background-image: url('img_jasam/ground\ turmeric.jpg');"></div>
+                <div class="product-content">
+                    <h3>Turmeric Powder</h3>
+                    <p>Turmeric powder is a vibrant, golden spice ground from the dried root of the Curcuma longa plant, 
+                        a relative of ginger, known for its earthy, slightly bitter flavor and potent 
+                        anti-inflammatory compound called curcumin.</p>
+                </div>
+            </div>
+             <div class="product-card">
+                <div class="product-img" style="background-image: url('img_jasam/ginger\ powder.jpg');"></div>
+                <div class="product-content">
+                    <h3>Ginger Powder</h3>
+                    <p>Ginger powder is a finely ground, golden-beige spice from dried ginger roots, 
+                        known for its warm, pungent, spicy flavor and strong aroma.</p>
+                </div>
+            </div>
+            <div class="product-card">
+                <div class="product-img" style="background-image: url('img_jasam/hibiscus.jpeg');"></div>
+                <div class="product-content">
+                    <h3>Dried Hibiscus Flowers</h3>
+                    <p>Carefully harvested and sun-dried to preserve natural red color and tangy flavor. Ideal for teas and beverages.</p>
+                </div>
+            </div>
+            <div class="product-card">
+                <div class="product-img" style="background-image: url('img_jasam/ginger\ flakes.jpg');"></div>
+                <div class="product-content">
+                    <h3>Dried Ginger Flakes</h3>
+                    <p>dehydrated, thinly sliced pieces of ginger root, offering a convenient, 
+                        shelf-stable form of the spice with its characteristic warm, 
+                        spicy, and pungent flavor, used to add zest to cooking, baking, teas, 
+                        and remedies without needing to peel or grate fresh ginger.</p>
+                </div>
+            </div>
+            <div class="product-card">
+                <div class="product-img" style="background-image: url('img_jasam/fresh\ tiger\ nuts.jpeg');"></div>
+                <div class="product-content">
+                    <h3>Tigernuts</h3>
+                    <p>High-grade organic tigernuts, available fresh or dehydrated. Rich in fiber and perfect for food manufacturing.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="stats">
+        <div class="stat-item">
+            <h2>68+</h2>
+            <p>Happy Clients</p>
+        </div>
+        <div class="stat-item">
+            <h2>24+</h2>
+            <p>Partnered Farmers</p>
+        </div>
+        <div class="stat-item">
+            <h2>15+</h2>
+            <p>Years Experience</p>
+        </div>
+        <div class="stat-item">
+            <h2>8+</h2>
+            <p>Countries Served</p>
+        </div>
+    </section>
+
+    <section class="section" id="contact">
+        <div class="section-title">
+            <h2>Get In Touch</h2>
+            <p>Ready to order? Contact us for quotes and export inquiries.</p>
+        </div>
+        <div class="contact-container">
+            <div class="contact-info">
+                <h3>Contact Information</h3>
+                <div class="info-item">
+                    <strong>📍 Abuja Office:</strong>
+                    <span>Plot 99 Panaf Drive Dawaki Abuja, FCT, Nigeria</span>
+                </div>
+                <div class="info-item">
+                    <strong>📞 Phone:</strong>
+                    <span>+234 812 187 3587<br>+234 803 312 2567</span>
+                </div>
+                <div class="info-item">
+                    <strong>✉️ Email:</strong>
+                    <span>jasamnigeria@gmail.com</span>
+                </div>
+            </div>
+            
+            <form class="contact-form">
+                <input type="text" placeholder="Your Name" required>
+                <input type="email" placeholder="Your Email" required>
+                <input type="text" placeholder="Subject" required>
+                <textarea rows="5" placeholder="Message" required></textarea>
+                <button type="submit" class="submit-btn">Send Message</button>
+            </form>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-grid">
+            <div class="footer-col">
+                <h4>Jasam Nigeria Ltd</h4>
+                <p>Trusted manufacturer and exporter of organic agricultural products since 1987.</p>
+            </div>
+            <div class="footer-col">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">About Us</a></li>
+                    <li><a href="#products">Products</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Products</h4>
+                <ul>
+                    <li>Dried Hibiscus Flowers</li>
+                    <li>Tiger Nuts</li>
+                    <li>Ground Pepper</li>
+                    <li>Ginger Powder</li>
+                    <li>Dried Ginger Flakes</li>
+                    <li>Turmeric Powder</li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Jasam Nigeria Limited. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+</body>
+</html>
